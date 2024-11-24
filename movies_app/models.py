@@ -20,11 +20,17 @@ class BaseModel(models.Model):
 class Genre(models.Model):
     name = models.CharField(max_length=255, primary_key=True)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class Movies(BaseModel):
     title = models.CharField(max_length=255)
     description = models.TextField()
     genres = models.ManyToManyField(Genre, related_name="movies_genres", blank=True)
+
+    def __str__(self) -> str:
+        return self.title
 
 
 class Collections(BaseModel):
@@ -36,3 +42,6 @@ class Collections(BaseModel):
     created_by = models.ForeignKey(
         User, on_delete=models.CASCADE, blank=True, null=True
     )
+
+    def __str__(self) -> str:
+        return self.title

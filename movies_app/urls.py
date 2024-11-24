@@ -17,11 +17,11 @@ from .views import UserRegiratrationAPIView
 
 
 urlpatterns = [
-    path("register", UserRegiratrationAPIView.as_view(), name="user-registration"),
-    path("login", jwt_views.TokenObtainPairView.as_view(), name="token-obtrain-pair"),
-    path("movies", MoveisListApiView.as_view(), name="movies-list"),
+    path("register/", UserRegiratrationAPIView.as_view(), name="user-registration"),
+    path("login/", jwt_views.TokenObtainPairView.as_view(), name="token-obtrain-pair"),
+    path("movies/", MoveisListApiView.as_view(), name="movies-list"),
     path(
-        "collection",
+        "collection/",
         CollectionListCreateAPIView.as_view(),
         name="collections-list-create",
     ),

@@ -28,7 +28,7 @@ DEBUG = True
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-APPEND_SLASH = True
+APPEND_SLASH = False
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -124,25 +124,6 @@ REST_FRAMEWORK = {
 }
 
 
-# ---------------#
-#  EMAIL SETUP   #
-# ---------------#
-
-
-# -----------------------#
-#  CELERY CONFIGURATION  #
-# -----------------------#
-
-CELERY_BROKER_URL = os.environ.get("CELERY_URL")
-CELERY_RESULT_BACKEND = os.environ.get("CELERY_URL")
-CELERY_ACCEPT_CONTENT = ["application/json"]
-CELERY_RESULT_SERIALIZER = "json"
-CELERY_TASK_SERIALIZER = "json"
-CELERY_STORE_ERRORS_EVEN_IF_IGNORED = True
-CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
-CELERY_TIMEZONE = "Asia/Kolkata"
-
-
 # -----------------------#
 #  INTERNATIONALIZATION   #
 # -----------------------#
@@ -162,6 +143,7 @@ USE_TZ = True
 # -------------------------#
 #  STATIC AND MEDIA CONFIG  #
 # --------------------------#
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
@@ -178,6 +160,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",

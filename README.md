@@ -1,34 +1,29 @@
-![ Logo](https://technologies.com/static/media/logo.20c3af3bf8b6aedba1ed0e68ca927882.svg)
 
-#  Django Starter Pack
-
-Welcome to the  Django Starter Pack! This starter pack is designed to help you kickstart your Django projects with some essential configurations and features.
+#  OneFin Django Task
 
 
 ## TECHNOLOGY STACK
 [![https://www.python.org/](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![DJANGO](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
 [![DjangoREST](https://img.shields.io/badge/DJANGO-REST-ff1709?style=for-the-badge&logo=django&logoColor=white&color=ff1709&labelColor=gray)](https://www.django-rest-framework.org/)
-[![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)](https://heroku.com/)
 
 
 
-## Getting Started
-
-Follow these steps to get your project up and running:
-
-### Prerequisites
 
 Make sure you have the following installed on your machine:
 
-- docker
+- docker (optional)
 - python
 - pip
 
-#### Install docker
 
-https://docs.docker.com/engine/install/
+## LINKS 
+
+- [API Docs](https://onefin-task.onrender.com/docs/redoc)
+- [ADMIN PANEL](https://onefin-task.onrender.com/admin/)
+- [POSTMAN DOCUMENTATION](https://documenter.getpostman.com/view/11858287/2sAYBUDs1U)
+
 
 #### Required packages
 
@@ -37,20 +32,27 @@ https://docs.docker.com/engine/install/
 - [flake8](https://pypi.org/project/flake8/)
 - [pylint](https://pypi.org/project/pylint/)
 
-### Clone the Repository
 
-```bash
-git clone https://github.com/-tech/_django_starter.git
-cd _django_starter
+### Run locally
+
+1. clone the repo : `https://github.com/anandrajB/onefin-task.git`
+2. Navigate to backend  : `cd onefin-task`
+3. Create a virtual environment: `python3 -m venv env`
+4. Activate the virtual environment:
+   - For Windows: `env\Scripts\activate`
+   - For Unix/macOS: `source env/bin/activate`
+
 ```
-
-### Install required vs code extensions
-
-- Open Visual Studio Code on your local machine.
-- Navigate to .devcontainer/devcontainer.json .
-- Press Ctrl + P (Windows/Linux) or Cmd + P (Mac) to open the command palette.
-- Enter > ***Extensions: Install Extensions*** and press Enter.
-
+- pip install -r requirements.txt
+- python manage.py migrate
+- python manage.py migrate --run-syncdb
+- python manage.py collectstatic
+- DJANGO_SETTINGS_MODDULE = project.settings 
+- pytest 
+- python manage.py check --deploy
+- python manage.py runserver
+```
+ 
 ### Run via docker
 
 #### do the collecstatic and migrations
