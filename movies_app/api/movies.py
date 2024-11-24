@@ -8,6 +8,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from utils.enum import ExceptionEnum, ResponseEnum
 from utils.typing import MoviesResponse
+from rest_framework.exceptions import APIException
 
 
 class MoveisListApiView(APIView):
@@ -17,6 +18,7 @@ class MoveisListApiView(APIView):
         self.movies_url = os.environ.get("MOVIES_URL")
         self.username = os.environ.get("MOVIES_API_USERNAME")
         self.password = os.environ.get("MOVIES_API_PASSWORD")
+
         if not all([self.movies_url, self.username, self.password]):
             raise ValueError(ExceptionEnum.MISSING_CREDENTIALS.value)
 
@@ -38,6 +40,9 @@ class MoveisListApiView(APIView):
                 movie_data["previous"] = movie_data["previous"].replace(
                     base_url, absolute_uri
                 )
+            if "results" not in movie_data:
+                raise APIException(detail=ExceptionEnum.INVALID_API_RESPONSE)
+
             for movie in movie_data["results"]:
                 if movie["genres"] is not None and len(movie["genres"]) > 0:
                     movie["genres"] = movie["genres"].split(",")
@@ -45,10 +50,8 @@ class MoveisListApiView(APIView):
                     movie["genres"] = []
             return movie_data
         except requests.exceptions.RequestException as e:
-            return Response(
-                {ResponseEnum.ERROR: ExceptionEnum.CONNECTION_ERROR}, status=500
-            )
+            raise APIException(detail=ExceptionEnum.CONNECTION_ERROR)
 
     def get(self, request, *args: Any, **kwargs: Any) -> Response:
         movies_data = self.get_movies_response()
-        return Response(movies_data if movies_data else None)
+        return Response(movies_data)

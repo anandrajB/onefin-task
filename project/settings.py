@@ -27,7 +27,7 @@ DEBUG = True
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-APPEND_SLASH = False
+APPEND_SLASH = True
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",

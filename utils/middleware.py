@@ -8,9 +8,8 @@ class RequestCounterMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if request.path == "/request-count":
-            key = "request_count"
-            count = cache.get(key, 0)
-            cache.set(key, count + 1, timeout=None)
+        key = "request_count"
+        count = cache.get(key, 0)
+        cache.set(key, count + 1, timeout=None)
         response = self.get_response(request)
         return response
