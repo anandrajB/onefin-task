@@ -21,14 +21,14 @@ if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
 
 ALLOWED_HOSTS = ["*"]
-DEBUG = True
+DEBUG = False
 # -----------------------#
 #  IMPORTANT CONFIG - 1  #
 # -----------------------#
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-APPEND_SLASH = False
+APPEND_SLASH = True
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
