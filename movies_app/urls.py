@@ -7,7 +7,7 @@ from movies_app.api.collection import (
 )
 from movies_app.api.movies import MoveisListApiView
 
-from .views import UserRegiratrationAPIView
+from .views import UserRegiratrationAPIView, index
 
 # ------------------------------------------------------------------------------------------
 
@@ -17,6 +17,7 @@ from .views import UserRegiratrationAPIView
 
 
 urlpatterns = [
+    path("", index),
     path("register/", UserRegiratrationAPIView.as_view(), name="user-registration"),
     path("login/", jwt_views.TokenObtainPairView.as_view(), name="token-obtrain-pair"),
     path("movies/", MoveisListApiView.as_view(), name="movies-list"),
