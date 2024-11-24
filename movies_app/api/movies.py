@@ -3,12 +3,13 @@ from typing import Any, Union
 
 import requests
 from django.urls import reverse
-from rest_framework.views import APIView
+from rest_framework.exceptions import APIException
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from utils.enum import ExceptionEnum, ResponseEnum
+from rest_framework.views import APIView
+
+from utils.enum import ExceptionEnum
 from utils.typing import MoviesResponse
-from rest_framework.exceptions import APIException
 
 
 class MoveisListApiView(APIView):

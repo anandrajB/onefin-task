@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Movies, Collections, Genre
 
+from .models import Collections, Genre, Movies
 
 admin.site.site_title = "OneFin Task Admin Panel"
 admin.site.site_header = "OneFin Task"

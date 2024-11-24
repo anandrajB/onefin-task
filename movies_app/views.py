@@ -1,15 +1,18 @@
 import datetime
 import logging
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.tokens import AccessToken
-from rest_framework.permissions import AllowAny
-from .serializers import UserRegistrationSerializer
-from django.http import JsonResponse
+
 from django.core.cache import cache
+from django.http import JsonResponse
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import AccessToken
+
+from .serializers import UserRegistrationSerializer
 
 logger = logging.getLogger(__name__)
+
+
 def index(request):
     logger.info("Homepage was accessed at " + str(datetime.datetime.now()) + " hours!")
     return JsonResponse({"hello": "world"})

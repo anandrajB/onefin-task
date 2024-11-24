@@ -1,13 +1,13 @@
-from django.conf.urls import include
 from django.urls import path
-from django.urls.conf import include
-from movies_app.api.movies import MoveisListApiView
-from .views import UserRegiratrationAPIView
+from rest_framework_simplejwt import views as jwt_views
+
 from movies_app.api.collection import (
     CollectionListCreateAPIView,
     CollectionRetriveUpdateAPIView,
 )
-from rest_framework_simplejwt import views as jwt_views
+from movies_app.api.movies import MoveisListApiView
+
+from .views import UserRegiratrationAPIView
 
 # ------------------------------------------------------------------------------------------
 

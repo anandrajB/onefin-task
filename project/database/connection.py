@@ -1,7 +1,9 @@
 import os
-from .options import DATABASE_OPTIONS  # noqa
 from pathlib import Path
+
 from dotenv import load_dotenv
+
+from .options import DATABASE_OPTIONS  # noqa
 
 load_dotenv()
 

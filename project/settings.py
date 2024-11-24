@@ -1,10 +1,11 @@
 import os
+from datetime import timedelta
 from pathlib import Path
 
 import dotenv
 
 from project.database.connection import DATABASE_CONFIG
-from datetime import timedelta
+
 from .config.logging import LOGGING  # noqa
 
 # --------------#
@@ -35,8 +36,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "movies_app",
     "drf_yasg",
+    "movies_app",
     "rest_framework",
     "rest_framework_simplejwt",
 ]

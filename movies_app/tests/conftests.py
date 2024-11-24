@@ -1,6 +1,7 @@
 import pytest
 from django.contrib.auth.models import User
-from movies_app.models import Movies, Genre, Collections
+
+from movies_app.models import Collections, Genre, Movies
 
 
 @pytest.fixture

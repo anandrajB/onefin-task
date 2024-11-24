@@ -1,15 +1,16 @@
+from django.db.models import QuerySet
 from django.shortcuts import get_object_or_404
 from rest_framework import status
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.request import Request
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from django.db.models import QuerySet
-from movies_app.models import Collections, Genre
+
+from movies_app.models import Collections
 from movies_app.serializers import (
     CollectionCreateUpdateSerializer,
     CollectionSerializer,
 )
-from rest_framework.request import Request
 from utils.enum import ResponseEnum
 from utils.response import (
     AcceptedReponse,
@@ -17,7 +18,6 @@ from utils.response import (
     NotFoundResponse,
     SuccessResponse,
 )
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 
 class CollectionListCreateAPIView(ListCreateAPIView):

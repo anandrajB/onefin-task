@@ -15,38 +15,77 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Genre',
+            name="Genre",
             fields=[
-                ('name', models.CharField(max_length=255, primary_key=True, serialize=False)),
+                (
+                    "name",
+                    models.CharField(max_length=255, primary_key=True, serialize=False),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Movies',
+            name="Movies",
             fields=[
-                ('uuid', models.UUIDField(default='1837eac2e50341198abc91ca96ed943f', editable=False, primary_key=True, serialize=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('title', models.CharField(max_length=255)),
-                ('description', models.TextField()),
-                ('genres', models.ManyToManyField(blank=True, related_name='movies_genres', to='movies_app.genre')),
+                (
+                    "uuid",
+                    models.UUIDField(
+                        default="1837eac2e50341198abc91ca96ed943f",
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("title", models.CharField(max_length=255)),
+                ("description", models.TextField()),
+                (
+                    "genres",
+                    models.ManyToManyField(
+                        blank=True, related_name="movies_genres", to="movies_app.genre"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Collections',
+            name="Collections",
             fields=[
-                ('uuid', models.UUIDField(default='1837eac2e50341198abc91ca96ed943f', editable=False, primary_key=True, serialize=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('title', models.CharField(blank=True, max_length=555, null=True)),
-                ('description', models.TextField()),
-                ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('movies', models.ManyToManyField(blank=True, related_name='movie_collections', to='movies_app.movies')),
+                (
+                    "uuid",
+                    models.UUIDField(
+                        default="1837eac2e50341198abc91ca96ed943f",
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("title", models.CharField(blank=True, max_length=555, null=True)),
+                ("description", models.TextField()),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "movies",
+                    models.ManyToManyField(
+                        blank=True,
+                        related_name="movie_collections",
+                        to="movies_app.movies",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]
