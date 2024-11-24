@@ -23,6 +23,9 @@ class Genre(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    class Meta:
+        verbose_name_plural = "Genre"
+
 
 class Movies(BaseModel):
     title = models.CharField(max_length=255)
@@ -31,6 +34,9 @@ class Movies(BaseModel):
 
     def __str__(self) -> str:
         return self.title
+
+    class Meta:
+        verbose_name_plural = "Movies"
 
 
 class Collections(BaseModel):
@@ -45,3 +51,6 @@ class Collections(BaseModel):
 
     def __str__(self) -> str:
         return self.title
+
+    class Meta:
+        verbose_name_plural = "Collections"
